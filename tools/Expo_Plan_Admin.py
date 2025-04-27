@@ -144,7 +144,7 @@ def df_to_git(dataframe, file_path):
     file_data = response.json()
     current_sha = file_data["sha"]
 
-    output_path = "data/Expo_Plan.xlsx"
+    output_path = "data/tempo_data.xlsx"
     dataframe.to_excel(output_path, index=False, engine="openpyxl")
 
     # 3. 读取修改后的内容并Base64编码
@@ -153,7 +153,7 @@ def df_to_git(dataframe, file_path):
 
     # 4. 通过API推送更新
     payload = {
-        "message": "Auto-update raw_data.xlsx",
+        "message": "Auto-update Expo_Plan.xlsx",
         "content": new_content,
         "sha": current_sha,  # 必须提供原SHA
         "branch": branch
