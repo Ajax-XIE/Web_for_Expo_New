@@ -136,6 +136,7 @@ def df_to_git(dataframe, file_path):
 
     headers = {"Authorization":f"token {token}"}
     api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}?ref={branch}"
+    st.write(api_url)
     response = requests.get(api_url, headers=headers)
     file_data = response.json()
     current_sha = file_data["sha"]
