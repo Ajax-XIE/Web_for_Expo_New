@@ -142,10 +142,9 @@ def df_to_git(dataframe, file_path):
 
     response = requests.get(api_url, headers=headers)
     file_data = response.json()
-    st.write(file_data)
     current_sha = file_data["sha"]
 
-    output_path = "temp_modified.xlsx"
+    output_path = "data/Expo_Plan.xlsx"
     dataframe.to_excel(output_path, index=False, engine="openpyxl")
 
     # 3. 读取修改后的内容并Base64编码
