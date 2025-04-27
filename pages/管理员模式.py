@@ -8,7 +8,7 @@ if mode == 'dev':
     import sys
     sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\tools')
 if mode == 'prod':
-    import Expo_Plan_Admin from tools
+    from tools import Expo_Plan_Admin from tools
 
 def control_dashboard(mode):
 
