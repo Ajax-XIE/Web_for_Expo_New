@@ -138,8 +138,6 @@ def df_to_git(dataframe, file_path):
         st.write("Missing token")
     else:
         st.write(token)
-
-    token = "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"
     
     headers = {"Authorization":f"token {token}"}
     api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}?ref={branch}"
