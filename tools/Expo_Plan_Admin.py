@@ -27,6 +27,9 @@ def add_info(mode):
         st.session_state.Add = True
         st.session_state.Del = False
 
+    st.session_state.submitAdd = False
+    st.session_state.submitDel = False
+
     if "submitAdd" not in st.session_state:
         st.session_state.submitAdd = False
 
