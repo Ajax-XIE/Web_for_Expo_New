@@ -4,13 +4,19 @@ import sys
 mode = ["prod","dev"]
 mode = mode[0]
 
-if mode == 'dev':
-    sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\tools')
-    expo_activity_raw = pd.read_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\data\\Expo_Plan.xlsx")
+@st.cache_data
+def load_data(mode):
+    if mode == 'dev':
+        sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\tools')
+        expo_activity_raw = pd.read_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\data\\Expo_Plan.xlsx")
 
-if mode == 'prod':
-    expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo_New/raw/main/data/Expo_Plan.xlsx'
-    expo_activity_raw = pd.read_excel(expo_url)
+    if mode == 'prod':
+        expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo_New/raw/main/data/Expo_Plan.xlsx'
+        expo_activity_raw = pd.read_excel(expo_url)
+
+    return expo_activity_raw
+
+expo_activity_raw = load_data(mode)
 
 expo_raw = expo_activity_raw[expo_activity_raw['Property']=="Expo"].reset_index().iloc[:,1:]
 activity_raw = expo_activity_raw[expo_activity_raw['Property']=="Activity"].reset_index().iloc[:,1:]
@@ -58,3 +64,6 @@ st.title("近期活动汇总")
 
 st.markdown(context)
 
+if st.button("刷新数据"):
+    st.cache_data.clear()
+    expo_activity_raw = load_data(mode)
