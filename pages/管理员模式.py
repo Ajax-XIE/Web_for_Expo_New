@@ -1,11 +1,15 @@
 import pandas as pd
 import streamlit as st
 import sys
-sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\tools')
-import Expo_Plan_Admin
-
 mode = ["prod","dev"]
-mode = mode[1]
+mode = mode[0]
+
+if mode == 'dev':
+    sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\tools')
+if mode == 'prod':
+    sys.path.append('https://github.com/Ajax-XIE/Web_for_Expo/raw/main/tools')
+    
+import Expo_Plan_Admin
 
 def control_dashboard(mode):
 
