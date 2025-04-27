@@ -128,6 +128,7 @@ def add_info(mode):
             st.write("删除成功")
 
 def df_to_git(dataframe, file_path):
+    file_path = "data/Expo_Plan.xlsx"
     repo_owner = "Ajax-XIE"
     repo_name = "Web_for_Expo"
     branch = "main"
