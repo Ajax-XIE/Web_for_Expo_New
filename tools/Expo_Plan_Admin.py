@@ -139,7 +139,7 @@ def df_to_git(dataframe, file_path):
     else:
         st.write(token)
 
-    token = "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"
+    token = "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"
     
     headers = {"Authorization":f"token {token}"}
     api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}?ref={branch}"
