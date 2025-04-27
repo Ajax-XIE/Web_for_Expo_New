@@ -150,7 +150,7 @@ def df_to_git(dataframe, file_path):
     # 3. 读取修改后的内容并Base64编码
     with open(output_path, "rb") as f:
         new_content = base64.b64encode(f.read()).decode("utf-8")
-    st.write(new_content)
+    st.write(api_url)
     # 4. 通过API推送更新
     payload = {
         "message": "Auto-update Expo_Plan.xlsx",
