@@ -139,6 +139,7 @@ def df_to_git(dataframe, file_path):
     st.write(api_url)
     response = requests.get(api_url, headers=headers)
     file_data = response.json()
+    st.write(file_data)
     current_sha = file_data["sha"]
 
     output_path = "temp_modified.xlsx"
