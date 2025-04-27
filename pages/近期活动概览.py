@@ -11,7 +11,7 @@ if mode == 'dev':
 if mode == 'prod':
     expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo_New/raw/main/data/Expo_Plan.xlsx'
     expo_activity_raw = pd.read_excel(expo_url)
-
+st.table(expo_activity_raw)
 expo_raw = expo_activity_raw[expo_activity_raw['Property']=="Expo"].reset_index().iloc[:,1:]
 activity_raw = expo_activity_raw[expo_activity_raw['Property']=="Activity"].reset_index().iloc[:,1:]
 
