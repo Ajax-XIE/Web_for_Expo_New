@@ -5,7 +5,7 @@ import base64
 import requests
 from openpyxl import load_workbook
 
-# expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/Expo_Plan.xlsx'
+# expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo_New/raw/main/Expo_Plan.xlsx'
 
 # try:
 #     expo_activity_change = pd.read_excel(expo_url)
@@ -14,10 +14,10 @@ from openpyxl import load_workbook
 
 def add_info(mode):
     if mode == 'dev':
-        expo_activity_change = pd.read_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\data\\Expo_Plan.xlsx")
+        expo_activity_change = pd.read_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\data\\Expo_Plan.xlsx")
 
     if mode == 'prod':
-        expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/data/Expo_Plan.xlsx'
+        expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo_New/raw/main/data/Expo_Plan.xlsx'
         expo_activity_change = pd.read_excel(expo_url)
 
     if "Add" not in st.session_state:
@@ -99,7 +99,7 @@ def add_info(mode):
             expo_activity_change = expo_activity_change.sort_values(["Property","Year","Month"],ascending=[False, True, True])
 
             if mode == 'dev':
-                expo_activity_change.to_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\data\\Expo_Plan.xlsx",index=False)
+                expo_activity_change.to_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\data\\Expo_Plan.xlsx",index=False)
             if mode == 'prod':
                 df_to_git(expo_activity_change,expo_url)
                 expo_activity_change.to_excel(expo_url,index=False)
@@ -123,7 +123,7 @@ def add_info(mode):
             expo_activity_change = expo_activity_change[expo_activity_change['ID']!=date].reset_index().iloc[:,1:]
 
             if mode == 'dev':
-                expo_activity_change.to_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\data\\Expo_Plan.xlsx",index=False)
+                expo_activity_change.to_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\data\\Expo_Plan.xlsx",index=False)
             if mode == 'prod':
                 expo_activity_change.to_excel(expo_url,index=False)
                 df_to_git(expo_activity_change,expo_url)
@@ -133,7 +133,7 @@ def add_info(mode):
 def df_to_git(dataframe, file_path):
     file_path = "data/Expo_Plan.xlsx"
     repo_owner = "Ajax-XIE"
-    repo_name = "Web_for_Expo"
+    repo_name = "Web_for_Expo_New"
     branch = "main"
     token = os.getenv("GITHUB_TOKEN")
     

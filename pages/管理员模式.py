@@ -6,7 +6,7 @@ mode = mode[0]
 
 if mode == 'dev':
     import sys
-    sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\tools')
+    sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\tools')
 if mode == 'prod':
     from tools import Expo_Plan_Admin 
 

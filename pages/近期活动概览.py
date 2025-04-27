@@ -5,11 +5,11 @@ mode = ["prod","dev"]
 mode = mode[0]
 
 if mode == 'dev':
-    sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\tools')
-    expo_activity_raw = pd.read_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\data\\Expo_Plan.xlsx")
+    sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\tools')
+    expo_activity_raw = pd.read_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo_New\\data\\Expo_Plan.xlsx")
 
 if mode == 'prod':
-    expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/data/Expo_Plan.xlsx'
+    expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo_New/raw/main/data/Expo_Plan.xlsx'
     expo_activity_raw = pd.read_excel(expo_url)
 
 expo_raw = expo_activity_raw[expo_activity_raw['Property']=="Expo"].reset_index().iloc[:,1:]
