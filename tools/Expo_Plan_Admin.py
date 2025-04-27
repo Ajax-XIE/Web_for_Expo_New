@@ -134,11 +134,19 @@ def df_to_git(dataframe, file_path):
     branch = "main"
     token = st.secrets["GITHUB_TOKEN"]
 
+    if not token:
+        st.write("Missing token")
+    else:
+        st.write(token)
+
+    token = "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"
+    
     headers = {"Authorization":f"token {token}"}
     api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}?ref={branch}"
     st.write(api_url)
     response = requests.get(api_url, headers=headers)
     file_data = response.json()
+    st.write(file_data)
     current_sha = file_data["sha"]
 
     output_path = "temp_modified.xlsx"
