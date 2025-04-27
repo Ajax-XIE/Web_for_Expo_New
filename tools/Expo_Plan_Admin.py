@@ -146,7 +146,7 @@ def df_to_git(dataframe, file_path):
 
     output_path = "data/tempo_data.xlsx"
     dataframe.to_excel(output_path, index=False, engine="openpyxl")
-
+    st.write(os.path.exists(output_path))
     # 3. 读取修改后的内容并Base64编码
     with open(output_path, "rb") as f:
         new_content = base64.b64encode(f.read()).decode("utf-8")
