@@ -3,12 +3,6 @@ import streamlit as st
 import subprocess
 import sys
 
-try:
-    import openpyxl
-except ImportError:
-    subprocess.check_call([sys.executable,"-m","pip","install","openpyxl"])
-    import openpyxl
-
 url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/Expo_Plan.xlsx'
 
 expo_activity_raw = pd.read_excel(url)
