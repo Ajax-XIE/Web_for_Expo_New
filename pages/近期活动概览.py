@@ -6,10 +6,6 @@ mode = mode[0]
 
 if mode == 'dev':
     sys.path.append('C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\tools')
-if mode == 'prod':
-    sys.path.append('https://github.com/Ajax-XIE/Web_for_Expo/raw/main/tools')
-
-if mode == 'dev':
     expo_activity_raw = pd.read_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\data\\Expo_Plan.xlsx")
 
 if mode == 'prod':
