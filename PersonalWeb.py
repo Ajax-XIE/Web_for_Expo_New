@@ -1,7 +1,9 @@
 import pandas as pd
 import streamlit as st
 
-expo_activity_raw = pd.read_excel("Expo_Plan.xlsx")
+url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/Expo_Plan.xlsx'
+
+expo_activity_raw = pd.read_excel(url)
 
 expo_raw = expo_activity_raw[expo_activity_raw['Property']=="Expo"].reset_index().iloc[:,1:]
 activity_raw = expo_activity_raw[expo_activity_raw['Property']=="Activity"].reset_index().iloc[:,1:]
