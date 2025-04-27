@@ -131,7 +131,7 @@ def df_to_git(dataframe, file_path):
     repo_owner = "Ajax-XIE"
     repo_name = "Web_for_Expo"
     branch = "main"
-    token = os.getnv("GITHUB_TOKEN")
+    token = os.getenv("GITHUB_TOKEN")
 
     headers = {"Authorization":f"token {token}"}
     api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}?ref={branch}"
