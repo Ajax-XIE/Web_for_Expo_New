@@ -158,7 +158,7 @@ def df_to_git(dataframe, file_path):
         "sha": current_sha,  # 必须提供原SHA
         "branch": branch
     }
-
+    st.write(requests.get(api_url, headers=headers))
     update_response = requests.put(api_url, headers=headers, json=payload)
     if update_response.status_code == 200:
         st.write("✅ Excel文件更新成功！")
