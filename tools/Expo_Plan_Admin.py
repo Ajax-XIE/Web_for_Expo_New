@@ -161,6 +161,6 @@ def df_to_git(dataframe, file_path):
     update_response = requests.put(api_url, headers=headers, json=payload)
 
     if update_response.status_code == 200:
-        st.write("✅ 提交成功，你的提交的信息正在审核中")
+        st.write("✅ 提交成功，该信息正在审核中")
     else:
         st.write(f"❌ 提交错误: {update_response.json()}")
