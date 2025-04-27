@@ -104,7 +104,6 @@ def add_info(mode):
                 df_to_git(expo_activity_change,expo_url)
                 expo_activity_change.to_excel(expo_url,index=False)
 
-            st.write("提交成功")
             st.session_state.submitAdd = False
         
     with delete_button:
@@ -163,6 +162,6 @@ def df_to_git(dataframe, file_path):
     update_response = requests.put(api_url, headers=headers, json=payload)
     st.write(update_response.json())
     if update_response.status_code == 200:
-        st.write("✅ Excel文件更新成功！")
+        st.write("✅ 提交成功，你的提交的信息正在审核中")
     else:
-        st.write(f"❌ 错误: {update_response.json()}")
+        st.write(f"❌ 提交错误: {update_response.json()}")
