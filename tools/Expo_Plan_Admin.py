@@ -126,7 +126,7 @@ def add_info(mode):
             if mode == 'prod':
                 expo_activity_change.to_excel(expo_url,index=False)
                 df_to_git(expo_activity_change,expo_url)
-            st.write("删除成功")
+            
             st.session_state.submitDel = False
 
 def df_to_git(dataframe, file_path):
@@ -157,10 +157,9 @@ def df_to_git(dataframe, file_path):
         "sha": current_sha,  # 必须提供原SHA
         "branch": branch
     }
-    st.write(dataframe)
-    st.write(requests.get(api_url, headers=headers))
+
     update_response = requests.put(api_url, headers=headers, json=payload)
-    st.write(update_response.json())
+
     if update_response.status_code == 200:
         st.write("✅ 提交成功，你的提交的信息正在审核中")
     else:
