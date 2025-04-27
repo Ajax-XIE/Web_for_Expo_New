@@ -136,15 +136,10 @@ def df_to_git(dataframe, file_path):
     repo_name = "Web_for_Expo"
     branch = "main"
     token = os.getenv("GITHUB_TOKEN")
-
-    if not token:
-        st.write("Missing token")
-    else:
-        st.write(token)
     
     headers = {"Authorization":f"token {token}"}
     api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}?ref={branch}"
-    st.write(api_url)
+
     response = requests.get(api_url, headers=headers)
     file_data = response.json()
     st.write(file_data)
@@ -167,6 +162,6 @@ def df_to_git(dataframe, file_path):
 
     update_response = requests.put(api_url, headers=headers, json=payload)
     if update_response.status_code == 200:
-        print("✅ Excel文件更新成功！")
+        st.write("✅ Excel文件更新成功！")
     else:
-        print(f"❌ 错误: {update_response.json()}")
+        st.write(f"❌ 错误: {update_response.json()}")
