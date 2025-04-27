@@ -27,9 +27,6 @@ def add_info(mode):
         st.session_state.Add = True
         st.session_state.Del = False
 
-    st.session_state.submitAdd = False
-    st.session_state.submitDel = False
-
     if "submitAdd" not in st.session_state:
         st.session_state.submitAdd = False
 
@@ -79,8 +76,7 @@ def add_info(mode):
         
         if property and year and month and day and expo and theme and progress and area and date:
             st.button("确认提交",on_click=switch_submitAdd)
-            if st.session_state.submitAdd:
-                st.write("提交成功")
+                
             if property == "大型漫展":
                 property = "Expo"
             else:
@@ -107,6 +103,9 @@ def add_info(mode):
             if mode == 'prod':
                 df_to_git(expo_activity_change,expo_url)
                 expo_activity_change.to_excel(expo_url,index=False)
+
+            st.write("提交成功")
+            st.session_state.submitAdd = False
         
     with delete_button:
 
@@ -129,6 +128,7 @@ def add_info(mode):
                 expo_activity_change.to_excel(expo_url,index=False)
                 df_to_git(expo_activity_change,expo_url)
             st.write("删除成功")
+            st.session_state.submitDel = False
 
 def df_to_git(dataframe, file_path):
     file_path = "data/Expo_Plan.xlsx"
