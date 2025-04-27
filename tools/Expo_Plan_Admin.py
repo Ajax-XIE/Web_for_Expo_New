@@ -132,7 +132,7 @@ def df_to_git(dataframe, file_path):
     repo_owner = "Ajax-XIE"
     repo_name = "Web_for_Expo"
     branch = "main"
-    token = st.secrets.get("GITHUB_TOKEN")
+    token = os.getenv("GITHUB_TOKEN")
 
     if not token:
         st.write("Missing token")
