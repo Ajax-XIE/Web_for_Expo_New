@@ -10,7 +10,7 @@ if mode == 'dev':
     expo_activity_raw = pd.read_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\data\\Expo_Plan.xlsx")
 
 if mode == 'prod':
-    expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/Expo_Plan.xlsx'
+    expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/data/Expo_Plan.xlsx'
     expo_activity_raw = pd.read_excel(expo_url)
 
 expo_raw = expo_activity_raw[expo_activity_raw['Property']=="Expo"].reset_index().iloc[:,1:]

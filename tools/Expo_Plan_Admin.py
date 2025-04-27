@@ -13,7 +13,7 @@ def add_info(mode):
         expo_activity_change = pd.read_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\data\\Expo_Plan.xlsx")
 
     if mode == 'prod':
-        expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/Expo_Plan.xlsx'
+        expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/data/Expo_Plan.xlsx'
         expo_activity_change = pd.read_excel(expo_url)
 
     if "Add" not in st.session_state:
