@@ -1,5 +1,9 @@
 import pandas as pd
 import streamlit as st
+import os
+import base64
+import requests
+from openpyxl import load_workbook
 
 # expo_url = 'https://github.com/Ajax-XIE/Web_for_Expo/raw/main/Expo_Plan.xlsx'
 
@@ -98,6 +102,7 @@ def add_info(mode):
             if mode == 'dev':
                 expo_activity_change.to_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\data\\Expo_Plan.xlsx",index=False)
             if mode == 'prod':
+                df_to_git(expo_activity_change,expo_url)
                 expo_activity_change.to_excel(expo_url,index=False)
         
     with delete_button:
@@ -119,4 +124,38 @@ def add_info(mode):
                 expo_activity_change.to_excel("C:\\Users\\ajax3\\Documents\\GitHub\\Web_for_Expo\\data\\Expo_Plan.xlsx",index=False)
             if mode == 'prod':
                 expo_activity_change.to_excel(expo_url,index=False)
+                df_to_git(expo_activity_change,expo_url)
             st.write("删除成功")
+
+def df_to_git(dataframe, file_path):
+    repo_owner = "Ajax-XIE"
+    repo_name = "Web_for_Expo"
+    branch = "main"
+    token = os.getnv("GITHUB_TOKEN")
+
+    headers = {"Authorization":f"token {token}"}
+    api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}?ref={branch}"
+    response = requests.get(api_url, headers=headers)
+    file_data = response.json()
+    current_sha = file_data["sha"]
+
+    output_path = "temp_modified.xlsx"
+    dataframe.to_excel(output_path, index=False, engine="openpyxl")
+
+    # 3. 读取修改后的内容并Base64编码
+    with open(output_path, "rb") as f:
+        new_content = base64.b64encode(f.read()).decode("utf-8")
+
+    # 4. 通过API推送更新
+    payload = {
+        "message": "Auto-update raw_data.xlsx",
+        "content": new_content,
+        "sha": current_sha,  # 必须提供原SHA
+        "branch": branch
+    }
+
+    update_response = requests.put(api_url, headers=headers, json=payload)
+    if update_response.status_code == 200:
+        print("✅ Excel文件更新成功！")
+    else:
+        print(f"❌ 错误: {update_response.json()}")
